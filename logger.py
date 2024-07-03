@@ -6,7 +6,7 @@ class Logger:
 
     def generation_started(self, generation_number):
         if self.verbose:
-            print("\n=============================================")
+            print("\n=============================================\n")
             print(f"Generation Number: {generation_number}")
 
     def generation_child(self, child_number, child, child_eval):
@@ -19,3 +19,5 @@ class Logger:
             print("Found Answer: ")
         print(f"{format(child, '024b')}")
         print(f"\nTook: {generation_number} Generations")
+
+    
