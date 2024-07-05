@@ -1,35 +1,39 @@
-# Evaluates a board
 def evaluate(board):
-    queen_pos = convertToBoard(board)
-    who_is_attacked = [False for _ in range(len(queen_pos))]
+    """
+    Evaluate the board to count the number of queens that are attacked.
+    """
+    queen_positions = convert_to_board(board)
+    attacked_queens = [False] * len(queen_positions)
 
-    for col in range(len(queen_pos)):
-        for col2 in range(col+1, len(queen_pos)):
-            if checkIfAttacks(col, queen_pos[col], col2, queen_pos[col2]):
-                who_is_attacked[col] = True
-                who_is_attacked[col2] = True
+    for col in range(len(queen_positions)):
+        for col2 in range(col + 1, len(queen_positions)):
+            if are_queens_attacking_each_other(col, queen_positions[col], col2, queen_positions[col2]):
+                attacked_queens[col] = True
+                attacked_queens[col2] = True
     
-    return sum(1 for is_attacked in who_is_attacked if is_attacked)
+    return sum(attacked_queens)
 
-def convertToBoard(board):
+def convert_to_board(board):
+    """
+    Convert the binary representation of the board to a list of queen positions.
+    """
     queens_pos = []
-
-    three_bits = 7
+    three_bits = 7  # Mask to extract the last three bits
 
     for _ in range(8):
-        line = board & three_bits
-        queens_pos.append(line)
+        row = board & three_bits
+        queens_pos.append(row)
         board >>= 3
 
     return queens_pos
 
-def checkIfAttacks(qCol, qRow, oCol, oRow):
-    if (qRow == oRow) or (qCol == oCol):
-        return True
-    
-    return abs(qRow-oRow) == abs(qCol-oCol)
+def are_queens_attacking_each_other(q1_col, q1_row, q2_col, q2_row):
+    """
+    Check if two queens are attacking each other.
+    """
+    return q1_row == q2_row or q1_col == q2_col or abs(q1_row - q2_row) == abs(q1_col - q2_col)
 
 if __name__ == "__main__":
     board = 0b000010010100000101011110
-    print(convertToBoard(board=board))
-    print(evaluate(board=board))
+    print(convert_to_board(board))
+    print(evaluate(board))

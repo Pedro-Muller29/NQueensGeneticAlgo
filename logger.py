@@ -18,6 +18,6 @@ class Logger:
             print("\n\n\n=============================================")
             print("Found Answer: ")
         print(f"{format(child, '024b')}")
-        print(f"\nTook: {generation_number} Generations")
+        print(f"\nTook:\n{generation_number} Generations")
 
     

@@ -30,7 +30,7 @@ class GenerationMaker:
             mother_pos = min(four_sample[2], four_sample[3])
             mother = ranked_generation[mother_pos][1]
 
-            new_generation += self.crossover(father, mother)
+            new_generation += eval(f"{self.crossover}(father, mother)")
             new_generation = new_generation[:POPULATION_SIZE]
 
         return new_generation
