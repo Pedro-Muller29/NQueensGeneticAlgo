@@ -1,4 +1,3 @@
-```markdown
 # Genetic Algorithm Crossover Study
 
 This project focuses on experimenting with crossover functions in genetic algorithms to solve the n-queens problem using 24-bit integer representations of queen positions on a chessboard.
@@ -55,4 +54,3 @@ Contributions are welcome! Open an issue or submit a pull request.
 ## License
 
 This project is licensed under the MIT License.
-```
